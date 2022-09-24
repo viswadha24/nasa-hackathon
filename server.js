@@ -3,7 +3,8 @@ const expressAsyncHandler = require('express-async-handler')
 const mclient=require("mongodb").MongoClient
 
 const app=exp()
-
+const port=process.env.port||8080;
+app.listen(port,()=>console.log(`server listening on post 3000..`))
 const path=require("path")
 //app.use(exp.static(path.join(__dirname,'./build')))
 
@@ -76,5 +77,4 @@ app.use("/user-api",userApi)
 
 
 
-const port=process.env.port||8080;
-app.listen(port,()=>console.log(`server listening on post 3000..`))
+
