@@ -47,7 +47,10 @@ mclient.connect(DBurl)
 .catch(err=>console.log("error in Db Connection",err))
 
 
-
+app.use(exp.static(path.join(__dirname, './build')))
+app.get('/', function (req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
 
 const userApi=require("./APIs/userApi")
 const detApi=require("./APIs/detail")
@@ -73,5 +76,5 @@ app.use("/user-api",userApi)
 
 
 
-
-app.listen(4000,()=>console.log(`server listening on post 3000..`))
+const port=process.env.port||8080;
+app.listen(port,()=>console.log(`server listening on post 3000..`))
